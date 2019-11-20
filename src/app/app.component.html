@@ -1,21 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<h3>Template driven forms</h3>
+<form #myForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+  <label>Name</label>
+  <input #usercontrol="ngModel" type="text" name="username" [(ngModel)]="username" required/>
+  <span *ngIf="usercontrol.invalid && usercontrol.errors?.required">Name required</span>
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>
+{{myForm.valid}}
+{{usercontrol.errors | json}} 
 
-<router-outlet></router-outlet>
+<h3>Reactive forms</h3>
+<form [formGroup]="profileForm" (ngSubmit)="onReactiveSubmit()">
+  <label>First name</label>
+  <input type="text" name="firstname" formControlName="firstname" required/>
+  <span *ngIf="profileForm.controls.firstname.invalid">First name required</span>
+  <div></div>
+  <label>Last name</label>
+  <input type="text" name="lastname" formControlName="lastname" required/>
+  <span *ngIf="profileForm.controls.lastname.invalid">First name required</span>
+  <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+</form>
+child component data - {{childData}}
+
+<h3>Child component</h3>
+<app-child [data]="username" [data1]="profileForm.controls.firstname.value"></app-child>
+
+
