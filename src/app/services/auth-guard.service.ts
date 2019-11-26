@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate, CanActivateChild } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate, CanActivateChild, CanLoad } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
+import { Route } from '@angular/compiler/src/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate,CanDeactivate<AboutComponent>,CanActivateChild{
+export class AuthGuardService implements CanActivate,CanDeactivate<AboutComponent>,CanActivateChild,CanLoad{
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class AuthGuardService implements CanActivate,CanDeactivate<AboutComponen
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
+    return true
+  }
+
+  canLoad(route:Route):boolean{ //It is used to prevent the application from loading a lazy loaded module if the user is unauthorized
     return true
   }
 }

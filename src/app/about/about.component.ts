@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  courses = [1,2,3]
+  myColor = false
   constructor() { }
 
   ngOnInit() {

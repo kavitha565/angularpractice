@@ -12,6 +12,14 @@ import { ContactComponent } from './contact/contact.component';
 import { UmbracoComponent } from './umbraco/umbraco.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
 import { CustomerDashboardModule } from './customer-dashboard/customer-dashboard.module';
+import { OneComponent } from './components/one/one.component';
+import { TwoComponent } from './components/two/two.component';
+import { ThreeComponent } from './components/three/three.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { EmployesComponent } from './employes/employes.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NodupPipe } from './nodup.pipe';
+import { FormsComponent } from './forms/forms.component';
 
 
 @NgModule({
@@ -23,14 +31,22 @@ import { CustomerDashboardModule } from './customer-dashboard/customer-dashboard
     AboutComponent,
     ContactComponent,
     UmbracoComponent,
-    PowerbiComponent
+    PowerbiComponent,
+    OneComponent,
+    TwoComponent,
+    ThreeComponent,
+    HighlightDirective,
+    EmployesComponent,
+    NodupPipe,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomerDashboardModule
+    CustomerDashboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [MainComponent]

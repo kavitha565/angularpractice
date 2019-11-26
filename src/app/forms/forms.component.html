@@ -1,0 +1,27 @@
+<h3>Reactive form - model/data driven forms</h3>
+<form [formGroup]="profileForm" (ngSubmit)="onsubmit()">
+    <div>
+        <label>First name</label>
+        <input type="text" name="firstName" formControlName="firstName" required/>
+        {{profileForm.controls.firstName.errors|json}}
+    </div>
+    <div>
+        <label>Last name</label>
+        <input type="text" name="lastName" formControlName="lastName" required/>
+        {{profileForm.controls.lastName.errors|json}}
+    </div>
+    <button type="submit" [disabled]="profileForm.invalid">submit</button>
+</form>
+
+<h3>Template driven forms - template based approch/ HTML forms</h3>
+<form #myForm="ngForm" (ngSubmit)="onformsubmit(myForm)">
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="username" required/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" name="password" [(ngModel)]="password" required/>
+    </div>
+    <button type="submit" [disabled]="myForm.invalid">submit</button>
+</form>

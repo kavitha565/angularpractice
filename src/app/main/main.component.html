@@ -10,6 +10,28 @@
         <li>
             <a routerLink="contact">Contact</a>
         </li>
+        <li>
+            <a routerLink="order-list">Orders</a>
+        </li>
     </ul>
 </nav>
 <router-outlet></router-outlet>
+
+<!-- <ul>
+    <li *ngFor="let item of data">{{item}}</li>
+</ul>
+<ul>
+    <li *ngFor="let item of items | keyvalue">{{item.value}}</li>
+</ul> -->
+
+<!--Property binding - is a one way data binding of sending the component data to view-->
+<!-- <img [src]="imagePath" width="100" height="100" alt="no image"/> -->
+
+<!-- Event binding is a one way data binding of sending the data from view to component -->
+<!-- <button (click)="clickme()">click me</button> -->
+
+<!--Two way data binding combination of both-->
+<!-- <input type="text" [(ngModel)]="username"/>
+{{username}} -->
+
+

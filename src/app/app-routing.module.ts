@@ -6,8 +6,24 @@ import { ContactComponent } from './contact/contact.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UmbracoComponent } from './umbraco/umbraco.component';
 import { PowerbiComponent } from './powerbi/powerbi.component';
+import { OneComponent } from './components/one/one.component';
+import { EmployesComponent } from './employes/employes.component';
+import { FormsComponent } from './forms/forms.component';
+
 
 const routes: Routes = [
+  {
+    path : 'forms',
+    component : FormsComponent
+  },
+  {
+    path : 'employes',
+    component : EmployesComponent
+  },
+  {
+    path : 'parent',
+    component : OneComponent
+  },
   {
     path:'about',
     component: AboutComponent,
@@ -23,6 +39,11 @@ const routes: Routes = [
     canActivateChild : [AuthGuardService]
   },
   {path:'contact',component: ContactComponent,canActivate: [AuthGuardService]},
+  { 
+    path: 'order-list',
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
+    canLoad : [AuthGuardService] 
+  },
   {path:'**',pathMatch:'full',redirectTo:'home'}
 ];
 

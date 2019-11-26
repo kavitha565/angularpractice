@@ -1,1 +1,14 @@
 <p>about works!</p>
+<ng-template [ngIf]="courses.length>0"> 
+    <div>List of courses</div>
+</ng-template>
+<div *ngIf="courses.length >0">
+    List of courses
+</div>
+
+<p [style.color]="myColor?'red':'blue'">Hi i am kavitha</p>
+<p [ngStyle]="{'color':myColor?'red':'blue','font-size':myColor?'20px':'30px'}">
+    Styled paragraph
+</p>
+
+<p appHighlight [highlightColor]="'red'">Custom directive</p>
